@@ -1,12 +1,4 @@
-import {
-  Box,
-  Center,
-  Divider,
-  Flex,
-  Spacer,
-  Stack,
-  Wrap,
-} from '@chakra-ui/layout';
+import { Flex, Stack, Wrap } from '@chakra-ui/layout';
 import {
   IconButton,
   Image,
@@ -15,12 +7,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import Head from 'next/head';
-import {
-  Copy,
-  EnvelopeSimple,
-  LinkedinLogo,
-  TwitterLogo,
-} from 'phosphor-react';
+import { Copy, LinkedinLogo, TwitterLogo } from 'phosphor-react';
 import { useEffect } from 'react';
 
 // import Layout from '../layouts/Layout';
