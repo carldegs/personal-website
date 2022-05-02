@@ -40,6 +40,7 @@ const Sidebar: React.FC = () => {
       color={activeHash.isDark ? 'white' : '#292929'}
       transition="color 0.2s ease-out"
       transitionDelay={activeHash.isDark ? '0.4s' : '0.05s'}
+      zIndex="420"
     >
       <Box
         h="full"

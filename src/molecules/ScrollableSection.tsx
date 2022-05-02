@@ -5,10 +5,9 @@ import { useRef, useEffect } from 'react';
 import { getHomeSectionData } from '../utils/routes';
 
 export const ScrollableSection: React.FC<{
-  name: string;
   hash: string;
   isDark?: boolean;
-}> = ({ name, hash, isDark, children }) => {
+}> = ({ hash, isDark, children }) => {
   const ref = useRef();
   const dimensions = useDimensions(ref, true);
   const router = useRouter();
@@ -28,7 +27,7 @@ export const ScrollableSection: React.FC<{
       bg={isDark ? 'black' : 'inherit'}
       h="100vh"
       scrollSnapAlign="start"
-      key={name}
+      key={hash}
       id={hash}
       ref={ref}
     >
