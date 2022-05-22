@@ -39,17 +39,16 @@ const WorkPanel: React.FC = () => {
 
   return (
     <ScrollableSection hash={HomeSections.work}>
-      <HomePanelWrapper scrollPaddingRight="120px" align="end">
+      <HomePanelWrapper
+        scrollPaddingRight={{ base: '12px', md: '120px' }}
+        align="end"
+      >
         {WORK_EXPERIENCE.map((workData, i) => (
           <WorkBox
             expanded={activeBox === i}
             key={workData.name}
             onClick={() => setActiveBox(i)}
-            ml={i === 0 && '360px'}
-            w="calc(100% - 360px)"
-            minW="calc(100% - 360px)"
-            alignSelf="center"
-            h="calc(100% - 20px)"
+            ml={{ base: i === 0 && '16px', md: i === 0 && '360px' }}
             ref={boxesRef.current[i]}
             id={`workbox-${i}`}
             pr={i === WORK_EXPERIENCE.length - 1 && '32px'}
