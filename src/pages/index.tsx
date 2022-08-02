@@ -1,7 +1,20 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Text } from '@chakra-ui/layout';
-import { Box, Container, Flex } from '@chakra-ui/react';
-import { Variants } from 'framer-motion';
+import { Text, Link } from '@chakra-ui/layout';
+import {
+  Box,
+  Container,
+  Flex,
+  HStack,
+  IconButton,
+  Stack,
+} from '@chakra-ui/react';
+import { motion, Variants } from 'framer-motion';
+import {
+  GithubLogo,
+  LinkedinLogo,
+  TwitterLogo,
+  Envelope,
+} from 'phosphor-react';
 import { useState } from 'react';
 
 import DynamicWeightText from '../components/DynamicWeightText';
@@ -9,8 +22,8 @@ import MotionBox from '../components/MotionBox';
 import { createRangeArr, mapCss } from '../utils';
 
 // TODO: Move HEY related stuff to own component
-const HEY_DURATION = 1.5;
-const NUM_HEYS = 24;
+const HEY_DURATION = 1.25;
+const NUM_HEYS = 16;
 const START_DELAY = 0.3;
 
 const timeRatio = HEY_DURATION / NUM_HEYS;
@@ -75,7 +88,7 @@ const Home: React.FC = () => {
         top="-50px"
         userSelect="none"
       >
-        {createRangeArr(24).map((i) => (
+        {createRangeArr(NUM_HEYS).map((i) => (
           <MotionBox
             custom={i}
             key={`hey-${i}`}
@@ -101,6 +114,7 @@ const Home: React.FC = () => {
               fontSize={{ base: '8xl', md: '9xl', lg: '190px' }}
               fontFamily="talampas"
               color={i === 1 && 'white'}
+              opacity={1 - Math.log(i + 1) / Math.log(NUM_HEYS) + 0.3}
               sx={
                 i !== 1 && {
                   WebkitTextStroke: { base: '1px white', lg: '2px white' },
@@ -117,9 +131,11 @@ const Home: React.FC = () => {
           as={Flex}
           w="full"
           h="full"
-          align="center"
-          justify="flex-end"
+          align="flex-end"
+          justify={{ base: 'flex-end', lg: 'center' }}
           maxW="container.lg"
+          flexDir="column"
+          py={8}
         >
           <DynamicWeightText
             text={[
@@ -129,6 +145,88 @@ const Home: React.FC = () => {
             ]}
             mouseEvent={mouseEvent}
           />
+          <Stack
+            mt={8}
+            textAlign="right"
+            spacing={0}
+            fontSize={{ base: 'sm', md: 'md' }}
+            as={motion.div}
+            initial={{
+              opacity: 0,
+              y: -20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                delay: 1.5,
+                duration: 0.125,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
+          >
+            <Text color="whiteAlpha.700" m={0}>
+              <i>Sandale!</i> My website is still under construction.
+            </Text>
+            <Text color="whiteAlpha.700" m={0}>
+              In the meantime, let&apos;s have a chat!
+            </Text>
+          </Stack>
+          <HStack
+            mt={4}
+            spacing={2}
+            as={motion.div}
+            initial={{
+              opacity: 0,
+              y: -20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                delay: 1.625,
+                duration: 0.125,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
+          >
+            <IconButton
+              as={Link}
+              aria-label="Github"
+              icon={<GithubLogo size={24} weight="duotone" />}
+              variant="ghost"
+              colorScheme="purple"
+              isExternal
+              href="https://github.com/carldegs"
+            />
+            <IconButton
+              as={Link}
+              aria-label="Email"
+              icon={<Envelope size={24} weight="duotone" />}
+              variant="ghost"
+              colorScheme="teal"
+              isExternal
+              href="https://www.linkedin.com/in/carl-justin-de-guia-b40a1b97"
+            />
+            <IconButton
+              as={Link}
+              aria-label="LinkedIn"
+              icon={<LinkedinLogo size={24} weight="duotone" />}
+              variant="ghost"
+              colorScheme="linkedin"
+              isExternal
+              href="https://www.linkedin.com/in/carl-justin-de-guia-b40a1b97"
+            />
+            <IconButton
+              as={Link}
+              aria-label="Twitter"
+              icon={<TwitterLogo size={24} weight="duotone" />}
+              variant="ghost"
+              colorScheme="twitter"
+              isExternal
+              href="https://twitter.com/carldegs"
+            />
+          </HStack>
         </Container>
       </Box>
     </Flex>
