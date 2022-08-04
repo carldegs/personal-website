@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Text, Link } from '@chakra-ui/layout';
 import {
   Box,
   Container,
@@ -7,8 +6,11 @@ import {
   HStack,
   IconButton,
   Stack,
+  Text,
+  Link,
 } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
+import Head from 'next/head';
 import {
   GithubLogo,
   LinkedinLogo,
@@ -49,6 +51,7 @@ const heyVariants: Variants = {
         delay: START_DELAY + i * timeRatio * 1.6,
         duration: 0.1,
       },
+      ease: [0.86, 0, 0.07, 1],
     },
     darken: {
       opacity: 0.3,
@@ -65,6 +68,13 @@ const Home: React.FC = () => {
 
   return (
     <Flex h="100vh" pos="relative" overflow="hidden" bg="gray.800">
+      <Head>
+        <title>carldegs</title>
+        <meta
+          name="description"
+          content="The personal website of Carl de Guia."
+        />
+      </Head>
       <MotionBox
         zIndex={1}
         pos="absolute"
@@ -112,7 +122,7 @@ const Home: React.FC = () => {
           >
             <Text
               fontSize={{ base: '8xl', md: '9xl', lg: '190px' }}
-              fontFamily="talampas"
+              fontFamily="Talampas, sans-serif"
               color={i === 1 && 'white'}
               opacity={1 - Math.log(i + 1) / Math.log(NUM_HEYS) + 0.3}
               sx={
@@ -135,7 +145,9 @@ const Home: React.FC = () => {
           justify={{ base: 'flex-end', lg: 'center' }}
           maxW="container.lg"
           flexDir="column"
-          py={8}
+          pt={8}
+          pb={{ base: 20, lg: 8 }}
+          pr={{ base: 8, md: 'inherit' }}
         >
           <DynamicWeightText
             text={[
@@ -161,7 +173,7 @@ const Home: React.FC = () => {
               transition: {
                 delay: 1.5,
                 duration: 0.125,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.86, 0, 0.07, 1],
               },
             }}
           >
@@ -186,7 +198,7 @@ const Home: React.FC = () => {
               transition: {
                 delay: 1.625,
                 duration: 0.125,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.86, 0, 0.07, 1],
               },
             }}
           >
@@ -206,7 +218,7 @@ const Home: React.FC = () => {
               variant="ghost"
               colorScheme="teal"
               isExternal
-              href="https://www.linkedin.com/in/carl-justin-de-guia-b40a1b97"
+              href="mailto:carl@carldegs.com"
             />
             <IconButton
               as={Link}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+      }
+      @media (prefers-color-scheme: dark) {
+        .cls-1 {
+          fill: white;
+        }
+      }
+    </style>
+  </defs>
+  <path id="Color_Fill_1" data-name="Color Fill 1" class="cls-1" d="M65,31H57l8,59h8V87L71,72l48-22c3.371,25.927,8.788,49.043,9,78H0L18,0h94q3,21.5,6,43L70,66V64Z"/>
+</svg>

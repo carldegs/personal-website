@@ -1,7 +1,15 @@
-import { Avatar } from '@chakra-ui/avatar';
-import { Divider, Flex, Heading, Spacer, Text } from '@chakra-ui/layout';
-import { Menu, MenuItem, MenuList } from '@chakra-ui/menu';
-import { MenuButton } from '@chakra-ui/react';
+import {
+  Avatar,
+  Divider,
+  Flex,
+  Heading,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Spacer,
+  Text,
+} from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
 const NAVBAR_HEIGHT = '60px';

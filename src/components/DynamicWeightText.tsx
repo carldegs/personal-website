@@ -44,10 +44,8 @@ const getRelativeDistance = (event, referenceElement, maxDistance = 99999) => {
 
 const onLoadVariants: Variants = {
   start: {
-    y: -20,
-    x: -10,
+    y: -80,
     opacity: 0,
-    rotate: -5,
   },
   end: (i) => ({
     x: 0,
@@ -55,9 +53,9 @@ const onLoadVariants: Variants = {
     opacity: 1,
     rotate: 0,
     transition: {
-      duration: 0.125,
+      duration: 0.6,
       delay: 1 + 0.05 * i,
-      ease: 'backIn',
+      ease: [0.86, 0, 0.07, 1],
     },
   }),
 };
@@ -90,13 +88,17 @@ const DynamicWeightText: React.FC<Props> = ({ text, mouseEvent }) => {
   }, [parsedLines.numLetters]);
 
   return (
-    <>
-      <MotionBox display="flex" flexWrap="wrap" w="min-content">
-        {parsedLines.lines.map((line, i) => (
+    <MotionBox display="flex" flexWrap="wrap" w="min-content" mr={-4}>
+      {parsedLines.lines.map((line, i) => (
+        <Flex
+          key={JSON.stringify(line)}
+          align="flex-end"
+          overflow="hidden"
+          w="full"
+        >
           <Flex
             as={MotionBox}
             w="full"
-            key={JSON.stringify(line)}
             justify="flex-end"
             custom={i}
             variants={onLoadVariants}
@@ -136,9 +138,9 @@ const DynamicWeightText: React.FC<Props> = ({ text, mouseEvent }) => {
               </Flex>
             ))}
           </Flex>
-        ))}
-      </MotionBox>
-    </>
+        </Flex>
+      ))}
+    </MotionBox>
   );
 };
 

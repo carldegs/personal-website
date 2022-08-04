@@ -1,6 +1,9 @@
-import { FormLabel } from '@chakra-ui/form-control';
-import { FormErrorMessage } from '@chakra-ui/form-control';
-import { FormControl, FormControlProps } from '@chakra-ui/form-control';
+import {
+  FormControl,
+  FormControlProps,
+  FormErrorMessage,
+  FormLabel,
+} from '@chakra-ui/react';
 import React, { ReactElement } from 'react';
 import { useFormContext, UseFormRegisterReturn } from 'react-hook-form';
 

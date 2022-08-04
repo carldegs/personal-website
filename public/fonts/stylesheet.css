@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Talampas';
+    src: url('Talampas-Regular.eot');
+    src: url('Talampas-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Talampas-Regular.woff2') format('woff2'),
+        url('Talampas-Regular.woff') format('woff'),
+        url('Talampas-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
