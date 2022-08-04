@@ -13,8 +13,8 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    heading: `'OverpassVariable', sans-serif`,
-    body: `'OverpassVariable', sans-serif`,
+    heading: 'OverpassVariable, sans-serif',
+    body: 'OverpassVariable, sans-serif',
   },
 });
 
