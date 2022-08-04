@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #fff;
+        stroke-linejoin: round;
+        stroke-width: 9px;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Color_Fill_1" data-name="Color Fill 1" class="cls-1" d="M65.367,35.883H58.43l6.938,51.164H72.3v-2.6L70.57,71.438,112.2,52.359C115.118,74.843,119.816,94.889,120,120H9L24.609,9h81.516q2.6,18.643,5.2,37.289L69.7,66.234V64.5Z"/>
+</svg>
