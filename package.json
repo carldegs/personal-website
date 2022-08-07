@@ -1,6 +1,6 @@
 {
   "name": "carldegs-website",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -23,8 +23,9 @@
     "@emotion/styled": "^11",
     "@fontsource/overpass": "^4.5.8",
     "@hookform/resolvers": "^2.8.8",
-    "framer-motion": "^6",
+    "framer-motion": "^7.0.0",
     "joi": "^17.6.0",
+    "lodash": "^4.17.21",
     "next": "^12.1.6",
     "next-connect": "^0.12.2",
     "next-seo": "^5.4.0",
