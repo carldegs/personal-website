@@ -1,67 +1,21 @@
-import { Flex, Heading } from '@chakra-ui/react';
-import { Variants } from 'framer-motion';
+import { Box, Flex, Heading } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import React, { useEffect, useMemo, useRef } from 'react';
 
-import MotionBox from './MotionBox';
+import useParallax from '../../hooks/useParallax';
+import MotionBox from '../Motion/MotionBox';
+import { dynamicTextVariants } from './constants';
+import { getRelativeDistance } from './utils';
 
 interface Props {
   text: string[];
   mouseEvent: any;
 }
 
-const getDistance = (deltaX: number, deltaY: number) =>
-  Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
-
-const getRelativeDistance = (event, referenceElement, maxDistance = 99999) => {
-  const position = {
-    x: event.pageX,
-    y: event.pageY,
-  };
-
-  const offset = {
-    left: referenceElement.offsetLeft,
-    top: referenceElement.offsetTop,
-    width: referenceElement.clientWidth,
-    height: referenceElement.clientHeight,
-  };
-
-  let reference = referenceElement.offsetParent;
-
-  while (reference) {
-    offset.left += reference.offsetLeft;
-    offset.top += reference.offsetTop;
-    reference = reference.offsetParent;
-  }
-
-  const centerX =
-    (position.x - offset.left - offset.width / 2) / (offset.width / 2);
-  const centerY =
-    (position.y - offset.top - offset.height / 2) / (offset.height / 2);
-
-  const distance = getDistance(centerX, centerY);
-  return distance > maxDistance ? maxDistance : distance;
-};
-
-const onLoadVariants: Variants = {
-  start: {
-    y: -80,
-    opacity: 0,
-  },
-  end: (i) => ({
-    x: 0,
-    y: 0,
-    opacity: 1,
-    rotate: 0,
-    transition: {
-      duration: 0.6,
-      delay: 1 + 0.05 * i,
-      ease: [0.86, 0, 0.07, 1],
-    },
-  }),
-};
-
 const DynamicWeightText: React.FC<Props> = ({ text, mouseEvent }) => {
   const textRefs = useRef([]);
+  const boxRef = useRef();
+  const y = useParallax(boxRef);
   const maxDistance = 12;
   const minWeight = 100;
   const maxWeight = 600;
@@ -88,7 +42,15 @@ const DynamicWeightText: React.FC<Props> = ({ text, mouseEvent }) => {
   }, [parsedLines.numLetters]);
 
   return (
-    <MotionBox display="flex" flexWrap="wrap" w="min-content" mr={-4}>
+    <Box
+      as={motion.div}
+      display="flex"
+      flexWrap="wrap"
+      w="min-content"
+      mr={-4}
+      ref={boxRef}
+      style={{ y }}
+    >
       {parsedLines.lines.map((line, i) => (
         <Flex
           key={JSON.stringify(line)}
@@ -101,7 +63,7 @@ const DynamicWeightText: React.FC<Props> = ({ text, mouseEvent }) => {
             w="full"
             justify="flex-end"
             custom={i}
-            variants={onLoadVariants}
+            variants={dynamicTextVariants}
             initial="start"
             animate="end"
           >
@@ -140,7 +102,7 @@ const DynamicWeightText: React.FC<Props> = ({ text, mouseEvent }) => {
           </Flex>
         </Flex>
       ))}
-    </MotionBox>
+    </Box>
   );
 };
 

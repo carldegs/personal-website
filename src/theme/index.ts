@@ -9,6 +9,8 @@ const theme = extendTheme({
     global: {
       html: {
         height: '100vh',
+        scrollBehavior: 'smooth',
+        scorllSnap: 'y mandatory',
       },
     },
   },
